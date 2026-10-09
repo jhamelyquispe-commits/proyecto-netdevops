@@ -1,0 +1,68 @@
+---
+- name: Aprovisionar Servidores Linux con Ansible
+  hosts: all
+  become: yes
+  tasks:
+    - name: Actualizar cache de apt
+      apt:
+        update_cache: yes
+
+- name: Configurar Servidor 1 - Web (NGINX)
+  hosts: web_servers
+  become: yes
+  tasks:
+    - name: Instalar NGINX
+      apt:
+        name: nginx
+        state: present
+    - name: Iniciar y habilitar NGINX
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+    - name: Desplegar página HTML personalizada del proyecto
+      copy:
+        content: "<h1>Proyecto NetDevOps - Servidor Web Activo</h1>"
+        dest: /var/www/html/index.html
+
+- name: Configurar Servidor 2 - FTP (vsftpd)
+  hosts: ftp_servers
+  become: yes
+  tasks:
+    - name: Instalar vsftpd
+      apt:
+        name: vsftpd
+        state: present
+    - name: Iniciar y habilitar vsftpd
+      service:
+        name: vsftpd
+        state: started
+        enabled: yes
+
+- name: Configurar Servidor 3 - Correo (Postfix)
+  hosts: mail_servers
+  become: yes
+  tasks:
+    - name: Instalar Postfix
+      apt:
+        name: postfix
+        state: present
+    - name: Iniciar y habilitar Postfix
+      service:
+        name: postfix
+        state: started
+        enabled: yes
+
+- name: Configurar Servidor 4 - DNS Empresarial (BIND9)
+  hosts: dns_servers
+  become: yes
+  tasks:
+    - name: Instalar BIND9
+      apt:
+        name: bind9
+        state: present
+    - name: Iniciar y habilitar BIND9
+      service:
+        name: bind9
+        state: started
+        enabled: yes
