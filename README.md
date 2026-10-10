@@ -1,25 +1,46 @@
-# Proyecto Integrador de Competencias NetDevOps
+# 🚀 Proyecto Integrador de Competencias: NetDevOps
 
-## 1. Descripción del Proyecto
-Sistema distribuido de automatización y operaciones de red (NetDevOps) diseñado para integrar la extracción de información mediante modelos YANG y APIs, monitoreo continuo de telemetría de red, aprovisionamiento automatizado de infraestructura con Ansible y mitigación proactiva ante ataques de denegación de servicio (DoS).
+Sistema distribuido para la automatización de redes, extracción de telemetría mediante modelos YANG/APIs, orquestación de servidores Linux y mitigación automatizada de ataques de denegación de servicio (DoS).
 
-## 2. Topología y Arquitectura del Entorno
-El entorno de laboratorio simula una red corporativa distribuida compuesta por:
-- **Switch Cisco IOS-XE Principal:** `172.23.18.224` (Soporte NETCONF / RESTCONF habilitado)
-- **Switch Cisco IOS-XE Secundario:** `172.23.18.223` (Soporte NETCONF / RESTCONF habilitado)
-- **Firewall FortiGate (FortiOS):** `172.23.18.225` (API REST e interfaz `wan1` configurada)
-- **Servidores Linux (Ubuntu Server):** 
-  - Servidor 1: Servicio Web (NGINX) con página personalizada.
-  - Servidor 2: Servidor FTP seguro (`vsftpd`).
-  - Servidor 3: Servidor de Correo (Postfix / Dovecot).
-  - Servidor 4: DNS Empresarial (`BIND9`) para resolución de nombres centralizada.
+---
 
-## 3. Requisitos Previos e Instalación
-Para configurar el entorno de ejecución en la estación de automatización, asegúrate de tener Python 3 y pip instalados, luego instala las dependencias de red y automatización:
-## 4. Manual de Usuario y Ejecución
-1. **Monitoreo y Telemetría:** Ejecuta el script principal para iniciar el dashboard interactivo y la supervisión de enlaces:
-2. **Mitigación Automática de DoS:** El script evalúa en tiempo real si el tráfico de las interfaces supera el umbral del 70% de ocupación, ejecutando un apagado defensivo (`shutdown`) automático de la interfaz afectada y registrando la estampa de tiempo (`timestamp`) en los logs del sistema.
-3. **Aprovisionamiento con Ansible:** Despliega y configura los servicios de los servidores Linux utilizando los playbooks estructurados ubicados en la carpeta `ansible/`.
+## 📋 Tabla de Contenidos
+1. [Descripción del Proyecto](#-descripción-del-proyecto)
+2. [Topología e Infraestructura](#-topología-e-infraestructura)
+3. [Requerimientos Técnicos Implementados](#-requerimientos-técnicos-implementados)
+4. [Instalación y Ejecución](#-instalación-y-ejecución)
+5. [Estructura del Repositorio](#-estructura-del-repositorio)
 
-## 5. Metodología GitOps y Colaboración
-El desarrollo del proyecto se estructuró bajo el flujo de trabajo de ramas (*Feature Branch Workflow*), asegurando revisiones de código (*Code Reviews*) e historial de commits controlados antes de la integración a la rama principal `main`.
+---
+
+## 🎯 Descripción del Proyecto
+Este proyecto integra desarrollo en Python, administración de sistemas Linux mediante Ansible y control de infraestructura de red (Cisco IOS-XE y FortiGate). El sistema monitorea de forma continua el ancho de banda y aplica políticas de mitigación defensiva automática (`administrative down`) al superar el umbral del 70% de tráfico ante posibles ataques DoS.
+
+---
+
+## 🌐 Topología e Infraestructura
+* **Switch Cisco IOS-XE (NETCONF/RESTCONF):** `172.23.18.224` / `172.23.18.223`
+* **Firewall FortiGate (API REST):** `172.23.18.225` (Interfaz `wan1`)
+* **Servidor Web (NGINX):** `192.168.91.144`
+* **Servidor FTP (vsftpd):** `192.168.91.143`
+* **Servidor Mail (Postfix):** `192.168.91.146`
+* **Servidor DNS (BIND9):** `192.168.91.145`
+
+---
+
+## ⚙️ Requerimientos Técnicos Implementados
+1. **Extracción de Modelos YANG y APIs:** Extracción automatizada de estado operativo y métricas de red.
+2. **Monitoreo de Telemetría:** Cálculo de ocupación de banda en tiempo real.
+3. **Orquestación con Ansible:** Despliegue automatizado de los 4 servicios de red esenciales.
+4. **Mitigación DoS (Umbral 70%):** Apagado automático de interfaces ante saturación de tráfico.
+5. **Recuperación (No Shutdown):** Función interactiva para restablecer enlaces con estampa de tiempo y registros de auditoría (*logs*).
+6. **Interfaz Interactiva (CLI Avanzada con Rich):** Panel visual en consola para supervisión y administración.
+7. **GitOps y Control de Versiones:** Historial estructurado y buenas prácticas de desarrollo colaborativo.
+
+---
+
+## ⚙️ Instalación y Ejecución
+
+1. Clonar el repositorio y acceder a la carpeta:
+   ```bash
+   cd ~/proyecto-netdevops

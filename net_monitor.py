@@ -4,9 +4,9 @@ import sys
 # Lista de servidores a monitorear con sus respectivas IPs y roles
 SERVERS = [
     {"name": "Web Server", "ip": "192.168.91.144", "role": "NGINX"},
-    {"name": "FTP Server", "ip": "192.168.91.145", "role": "vsftpd"},
-    {"name": "Mail Server", "ip": "192.168.91.143", "role": "Postfix"},
-    {"name": "DNS Server", "ip": "192.168.91.141", "role": "BIND9"}
+    {"name": "FTP Server", "ip": "192.168.91.143", "role": "vsftpd"},
+    {"name": "Mail Server", "ip": "192.168.91.146", "role": "Postfix"},
+    {"name": "DNS Server", "ip": "192.168.91.145", "role": "BIND9"}
 ]
 
 # Umbral de conexiones simulado para detección de DoS (porcentaje o cantidad de paquetes)

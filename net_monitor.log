@@ -1,0 +1,16 @@
+==========================================
+   MONITOR DE RED Y MITIGACIÓN DoS v1.0   
+==========================================
+[*] Iniciando extracción de telemetría de infraestructura...
+
+[*] Evaluando umbrales de seguridad y mitigación DoS...
+ -> Verificando Web Server (192.168.91.144) | Carga actual: 54.47%
+ [OK] Estado normal en Web Server.
+ -> Verificando FTP Server (192.168.91.143) | Carga actual: 65.61%
+ [OK] Estado normal en FTP Server.
+ -> Verificando Mail Server (192.168.91.146) | Carga actual: 67.37%
+ [OK] Estado normal en Mail Server.
+ -> Verificando DNS Server (192.168.91.145) | Carga actual: 34.6%
+ [OK] Estado normal en DNS Server.
+
+[*] Ciclo de monitoreo completado con éxito.
